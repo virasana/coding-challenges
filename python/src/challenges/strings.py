@@ -5,4 +5,5 @@ def reverse_string(text):
     return text[::-1]
 
 def is_palindrome(text):
-    return text == reverse_string(text)
+    reversed = reverse_string(text)
+    return (text == reversed, reversed)
