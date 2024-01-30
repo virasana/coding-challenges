@@ -12,3 +12,19 @@ def factorial_generator_descending(n):
     for i in range(n -1, 1, -1):
         result *= i
         yield result
+
+def create_fibonacci(series_length):
+    result = [0,1]
+    while len(result) < series_length:
+        result.append(result[-1] + result[-2])
+    return result
+
+def fibonacci_generator(series_length):
+    a, b = 0,1
+
+    for _ in range(0, series_length):
+        yield a
+        a, b = b, a + b
+        
+
+

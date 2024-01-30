@@ -28,6 +28,17 @@ class TestMaths(unittest.TestCase):
                               f'Expected {expected[index]}.  Actual {actual}')
             )
 
+    def test_fibonacci_create(self):
+        expected = [0,1,1,2,3,5,8]
+        actual = maths.create_fibonacci(len(expected))
+        self.assertEqual(expected, actual, f'Expected: {expected}. Actual: {actual}')
+
+    def test_fibonacci_generator(self):
+        expected = [0, 1, 1, 2, 3, 5, 8]
+        actual = list(maths.create_fibonacci(len(expected)))
+        self.assertEqual(actual, expected, f'Expected: {expected}. Actual: {actual}')
+
+
 if __name__ == "main":
     unittest.main()
 

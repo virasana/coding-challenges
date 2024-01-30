@@ -19,9 +19,3 @@ class TestStrings(unittest.TestCase):
         expected = (True, "madamimadam")
         actual = strings.is_palindrome(input)
         self.assertEqual(expected, actual, f'Expected: {expected}.  Actual: {actual}')
-
-
-if __name__ == "main":
-    unittest.main()
-
-
