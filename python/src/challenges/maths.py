@@ -21,7 +21,6 @@ def create_fibonacci(series_length):
 
 def fibonacci_generator(series_length):
     a, b = 0,1
-
     for _ in range(0, series_length):
         yield a
         a, b = b, a + b
