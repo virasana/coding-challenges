@@ -9,6 +9,7 @@ def merge_the_tools(string, k):
     result = []
     for string in substrings:
         seen = set()
+        # this line is worth inspecting closely for learning purposes
         result.append(''.join(ch for ch in string if ch not in seen and not seen.add(ch)))
     return result
 
