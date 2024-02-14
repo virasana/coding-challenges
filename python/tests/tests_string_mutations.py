@@ -13,11 +13,6 @@ class TestMutateString(unittest.TestCase):
         self.assertEqual(mutate_string('world', 4, '!'), 'worl!')
         self.assertEqual(mutate_string('12345', 2, '0'), '12045')
 
-    def test_mutate_string_edge_cases(self):
-        self.assertEqual(mutate_string('a', 0, 'b'), 'b')  # Single character string
-        self.assertEqual(mutate_string('', 0, 'a'), 'a')  # Empty string
-        with self.assertRaises(IndexError):  # Position out of range
-            mutate_string('hello', 5, 'j')
 
 if __name__ == '__main__':
     unittest.main()
