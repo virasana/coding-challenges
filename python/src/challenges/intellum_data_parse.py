@@ -19,15 +19,10 @@ class Product:
 def create_product(row: Mapping[str, Any]) -> Product:
     product = Product()
     try:
-        # Assign fields
         product.id = str(row['id']).strip()
         product.name = str(row['name']).strip()
         product.price = round(float(row['price']), 2)
         product.quantity = int(row['quantity'])
-
-        # Validate mandatory string fields
-        if not product.id or not product.name:
-            raise ValueError("Mandatory field id or name is empty")
 
         return product
     except Exception as e:
