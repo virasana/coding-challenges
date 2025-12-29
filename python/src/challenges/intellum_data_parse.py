@@ -34,16 +34,19 @@ def parse_all_files_lazy(file_paths: List[str]) -> Iterable[Product]:
         yield from parse_file_path(file_path)
 
 def parse_file_path(file_path: str) -> Iterable[Product]:
-    extension = Path(file_path).suffix
+    file_extension = Path(file_path).suffix
     parsers = {
         '.csv': parse_csv,
         '.txt': parse_txt,
         '.json': parse_json
     }
-    if extension in parsers:
-        yield from parsers[extension](file_path)
-    else:
+
+    if not file_extension in parsers:
         logger.warning(f"Extension not supported for file_path. Skipping: {file_path}")
+        return
+    
+    yield from parsers[file_extension](file_path)
+  
 
 def parse_txt(file_path: str) -> Iterable[Product]:
     with open(file_path, 'r', encoding='utf-8', newline='') as f:
