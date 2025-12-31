@@ -6,7 +6,7 @@ import pandas
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-logging.getLogger('urllib3').setLevel('INFO')
+logging.getLogger('urllib3').setLevel(logging.warning)
 
 API_URL = 'https://jsonplaceholder.typicode.com/posts'
 API_MAX_TRIES = 3
