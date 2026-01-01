@@ -66,7 +66,7 @@ def parse_file_paths(file_paths: List[str]) -> Iterable[Product]:
 if(__name__ == '__main__'):
     file_paths = [
         str(file_path) 
-        for file_path in Path(__file__).parent.glob("intellum_data_parse_data*")
+        for file_path in Path(__file__).parent.glob("intel_data_parse_data*")
     ]
 
     for product in parse_file_paths(file_paths):

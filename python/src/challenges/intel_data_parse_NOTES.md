@@ -1,4 +1,4 @@
-# Notes for the intellum job prep "data parsing" challenge
+# Notes for the intel job prep "data parsing" challenge
 
 ## Tasks
 
@@ -14,6 +14,6 @@ logger.setLevel(logging.INFO)
 Using a list comprehension with pathlib.Path, __file__, .glob
 
 ```python
-file_paths = [str(path) for path in pathlib.Path(__file__).parent.glob("intellum_data_parse_data*")]
+file_paths = [str(path) for path in pathlib.Path(__file__).parent.glob("intel_data_parse_data*")]
 ```
 

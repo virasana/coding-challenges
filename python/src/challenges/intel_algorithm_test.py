@@ -1,5 +1,5 @@
 import pytest
-from intellum_algorithm import max_tasks
+from intel_algorithm import max_tasks
 import sys, os
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))

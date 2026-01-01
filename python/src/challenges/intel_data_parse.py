@@ -19,15 +19,10 @@ class Product:
 def create_product(row: Mapping[str, Any]) -> Product:
     product = Product()
     try:
-        # Assign fields
         product.id = str(row['id']).strip()
         product.name = str(row['name']).strip()
         product.price = round(float(row['price']), 2)
         product.quantity = int(row['quantity'])
-
-        # Validate mandatory string fields
-        if not product.id or not product.name:
-            raise ValueError("Mandatory field id or name is empty")
 
         return product
     except Exception as e:
@@ -39,16 +34,19 @@ def parse_all_files_lazy(file_paths: List[str]) -> Iterable[Product]:
         yield from parse_file_path(file_path)
 
 def parse_file_path(file_path: str) -> Iterable[Product]:
-    extension = Path(file_path).suffix
+    file_extension = Path(file_path).suffix
     parsers = {
         '.csv': parse_csv,
         '.txt': parse_txt,
         '.json': parse_json
     }
-    if extension in parsers:
-        yield from parsers[extension](file_path)
-    else:
+
+    if not file_extension in parsers:
         logger.warning(f"Extension not supported for file_path. Skipping: {file_path}")
+        return
+    
+    yield from parsers[file_extension](file_path)
+  
 
 def parse_txt(file_path: str) -> Iterable[Product]:
     with open(file_path, 'r', encoding='utf-8', newline='') as f:
@@ -71,7 +69,7 @@ def parse_json(file_path: str) -> Iterable[Product]:
 if __name__ == '__main__':
     file_paths = [
         str(file_path)
-        for file_path in Path(__file__).parent.glob('intellum_data_parse_data*')
+        for file_path in Path(__file__).parent.glob('intel_data_parse_data*')
     ]
 
     for product in parse_all_files_lazy(file_paths):
