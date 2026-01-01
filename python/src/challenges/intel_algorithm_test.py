@@ -25,5 +25,9 @@ def test_max_tasks():
     # Verifies the algorithm correctly handles minimal input
     assert max_tasks([(2,3)]) == 1
 
+    # Increasing deadlines with decreasing durations create a tight cumulative constraint 
+    # that tests whether the algorithm makes globally optimal scheduling choices.
+    assert max_tasks([(5, 5),(4, 6),(3, 7),(2, 8)]) == 2
+
 if __name__ == "__main__":
     pytest.main([__file__])
